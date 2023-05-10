@@ -20,6 +20,17 @@ app.set('view engine', 'handlebars')
 
 /*------------------------------------------*/
 
+app.get('/listar', async (req,res)=>{
+    const dados = await Usuario.findAll({raw:true})
+    console.log(dados) 
+    // res.redirect('/') 
+    res.render('lista', {valor: dados})
+})
+
+app.get('/',(req,res)=>{
+    // res.end('teste de dados')
+    res.render('home')
+})
 /*------------------------------------------*/
 
 conn.sync().then(()=>{
